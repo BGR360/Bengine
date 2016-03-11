@@ -13,10 +13,14 @@ DEFINES += BENGINE_LIBRARY
 
 VPATH += src
 
-SOURCES += bengine.cpp
+SOURCES += bengine.cpp \
+    src/core/bobject.cpp \
+    src/core/bcomponent.cpp
 
 HEADERS += bengine.h\
-        bengine_global.h
+        bengine_global.h \
+    src/core/bobject.h \
+    src/core/bcomponent.h
 
 unix {
     target.path = /usr/lib
