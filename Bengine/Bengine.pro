@@ -11,6 +11,8 @@ TEMPLATE = lib
 
 DEFINES += BENGINE_LIBRARY
 
+VPATH += src
+
 SOURCES += bengine.cpp
 
 HEADERS += bengine.h\
