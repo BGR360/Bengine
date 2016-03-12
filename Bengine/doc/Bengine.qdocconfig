@@ -1,0 +1,75 @@
+# include($QT_INSTALL_DOCS/global/qt-module-defaults.qdocconf)
+
+project = Bengine
+description = My 3D C++ Game Engine written using Qt
+
+sourcedirs = ../src
+headerdirs = ../src
+
+sources.fileextensions = "*.cpp *.qdoc *.mm *.qml"
+headers.fileextensions = "*.h *.ch *.h++ *.hh *.hpp *.hxx"
+
+outputdir = ./html
+outputformats = HTML
+
+HTML.nonavigationbar = "false"
+HTML.headerstyles = \
+    "   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'/>\n" \
+    "   <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' />\n" \
+    "   <link rel='stylesheet' type='text/css' href='style/online.css'/>\n"
+
+HTML.stylesheets = ./style/online.css
+
+HTML.headerscripts = \
+    "   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>\n" \
+    "   <script type='text/javascript' src='scripts/main.js'></script>\n"
+
+HTML.scripts = ./style/main.js
+
+# minimal header
+HTML.postheader = \
+    "<body>\n" \
+    "<div class=\"header\" id=\"header\">\n" \
+    "<header id=\"navbar\" class=\"\">\n" \
+    "        <div class=\"container\">\n" \
+    "                <div class=\"navbar-header clearfix\">\n" \
+    "                    <a href=\"#\" class=\"navbar-toggle\">\n" \
+    "                        <figure>\n" \
+    "                            <span class=\"line\"></span>\n" \
+    "                        </figure>\n" \
+    "                        <span>Menu</span>\n" \
+    "                    </a>\n" \
+    "                    <a href=\"http://qt.io/\" class=\"navbar-oneQt retina\" data-icon=\"\">\n" \
+    "                    </a>\n" \
+    "                    <nav class=\"navbar-menu clearfix\" role=\"navigation\">\n" \
+    "                        <ul id=\"mainmenu\" class=\"menu\">\n" \
+    "<li id=\"menu-item-18\" class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-18\"><a href=\"http://github.com/bgr360/Bengine/\">Documentation</a></li>\n" \
+    "<li id=\"menu-item-12207\" class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-12207\"><a href=\"http://github.com/bgr360/Bengine/\">Source Code</a></li>\n" \
+    "                       </ul>\n" \
+    "                    </nav>\n" \
+    "                </div>\n" \
+    "            </div>\n" \
+    "</header>\n" \
+    "</div>\n" \
+    "<div class=\"main\">\n" \
+    "<div class=\"main-rounded\">\n" \
+    "<div class=\"navigationbar\">\n" \
+    "    <ul class=\"sub-navigation\">\n" \
+    "        <li><a href=\"http://wiki.qt.io/\">Qt Wiki</a></li>\n" \
+    "        <li><a href=\"http://doc.qt.io/\" class=\"active\">Qt Documentation</a></li>\n" \
+    "        <li><a href=\"http://bgr360.github.io/\">Ben Reeves' Website</a></li>\n" \
+    "    </ul>\n" \
+    "    <div id=\"main_title_bar\">\n" \
+    "        <h1>Bengine Documentation</h1>\n" \
+    "    </div>\n" \
+    "    <ul>\n"
+
+HTML.postpostheader = \
+    "    </ul>\n" \
+    "</div>\n" \
+    "<div class=\"content\">\n" \
+    "    <div class=\"line\">\n" \
+    "        <div class=\"content mainContent\">\n"
+
+HTML.prologue = \
+    "<div class=\"context\">\n"

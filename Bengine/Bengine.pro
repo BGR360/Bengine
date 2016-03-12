@@ -26,3 +26,9 @@ unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+DISTFILES += \
+    Bengine.qdocconfig \
+    doc/Bengine.qdocconfig
+
+QMAKE_DOCS = doc/Bengine.qdocconfig
