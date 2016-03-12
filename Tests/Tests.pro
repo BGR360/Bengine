@@ -1,5 +1,4 @@
-QT += core
-QT -= gui
+QT += core testlib
 
 CONFIG += c++11
 
@@ -9,10 +8,14 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
-VPATH += src
-
-SOURCES += main.cpp
+SOURCES += src/main.cpp \
+    src/btest.cpp \
+    src/btestcollection.cpp
 
 LIBS += -L../Bengine -lbengine
 
-INCLUDEPATH += ../Bengine/src
+INCLUDEPATH += src ../Bengine/src
+
+HEADERS += \
+    src/btest.h \
+    src/btestcollection.h
