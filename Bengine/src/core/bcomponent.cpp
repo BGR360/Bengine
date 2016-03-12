@@ -2,7 +2,7 @@
 
 /*!
  * \class BComponent
- * \brief The BComponent class is the interface for all Game Components
+ * \brief The BComponent class is the interface for all Game Components.
  * \inmodule core
  *
  * Components are used to customize the functionality of a BObject.
@@ -11,7 +11,7 @@
  */
 
 /*!
- * \brief Constructs a new BComponent
+ * \brief Constructs a new BComponent.
  */
 BComponent::BComponent()
 {
