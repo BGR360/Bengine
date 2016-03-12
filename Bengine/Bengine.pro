@@ -11,18 +11,22 @@ TEMPLATE = lib
 
 DEFINES += BENGINE_LIBRARY
 
-VPATH += src
+INCLUDEPATH += src
 
-SOURCES += bengine.cpp \
+SOURCES += src/bengine.cpp \
     src/core/bobject.cpp \
     src/core/bcomponent.cpp \
     doc/landing-page.qdoc \
-    doc/cpp-classes.qdoc
+    doc/cpp-classes.qdoc \
+    src/core/core.qdoc \
+    doc/modules.qdoc \
+    src/core/bclock.cpp
 
-HEADERS += bengine.h\
-        bengine_global.h \
+HEADERS += src/bengine.h\
+        src/bengine_global.h \
     src/core/bobject.h \
-    src/core/bcomponent.h
+    src/core/bcomponent.h \
+    src/core/bclock.h
 
 unix {
     target.path = /usr/lib

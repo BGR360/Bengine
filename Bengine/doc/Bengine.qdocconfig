@@ -43,7 +43,7 @@ HTML.postheader = \
     "                    </a>\n" \
     "                    <nav class=\"navbar-menu clearfix\" role=\"navigation\">\n" \
     "                        <ul id=\"mainmenu\" class=\"menu\">\n" \
-    "<li id=\"menu-item-18\" class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-18\"><a href=\"http://github.com/bgr360/Bengine/\">Documentation</a></li>\n" \
+    "<li id=\"menu-item-18\" class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-18\"><a href=\"index.html\">Documentation</a></li>\n" \
     "<li id=\"menu-item-12207\" class=\"menu-item menu-item-type-post_type menu-item-object-page menu-item-12207\"><a href=\"http://github.com/bgr360/Bengine/\">Source Code</a></li>\n" \
     "                       </ul>\n" \
     "                    </nav>\n" \

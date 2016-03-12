@@ -4,7 +4,7 @@
 /*!
  * \class BObject
  * \brief The BObject class is the base class for all Game Objects.
- * \inmodule core
+ * \inmodule Core
  *
  * A BObject carries a list of BComponent objects and is the base class for all game objects.
  *
@@ -14,10 +14,9 @@
 /*!
  * \brief Constructs a new BObject.
  */
-BObject::BObject()
-{
-
-}
+BObject::BObject() :
+    m_parent(nullptr)
+{}
 
 /*!
  * \brief Destroys a BObject.
@@ -44,23 +43,36 @@ QVector<BComponent*> BObject::getComponents() const
 /*!
  * Adds \a component to this object's list of components.
  *
- * A BObject has ownership of its BObjects and is responsible for deleting them.
+ * Automatically sets the parent of \a component to \c this.
+ *
+ * \b{Note:} A BObject has ownership of its BComponent objects and is responsible for deleting them.
  */
 void BObject::addComponent(BComponent* component)
 {
-    m_components.push_back(component);
+    if (component)
+    {
+        component->setParent(this);
+        m_components.push_back(component);
+    }
 }
 
 /*!
  * \brief Removes a BComponent from the object.
  *
+ * Automatically sets the parent of \a component to \c null if removed.
+ *
  * Returns \c true if \a component was owned by this BObject and removed; \c false otherwise.
  */
 bool BObject::removeComponent(BComponent* component)
 {
-    int index = m_components.indexOf(component);
-    if (index == -1)
-        return false;
-    m_components.remove(index);
-    return true;
+    if (component)
+    {
+        int index = m_components.indexOf(component);
+        if (index == -1)
+            return false;
+
+        component->setParent(nullptr);
+        m_components.remove(index);
+        return true;
+    }
 }

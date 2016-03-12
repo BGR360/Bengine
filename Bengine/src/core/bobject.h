@@ -3,9 +3,11 @@
 
 #include <qvector.h>
 
+#include <bengine_global.h>
+
 class BComponent;
 
-class BObject
+class BENGINESHARED_EXPORT BObject
 {
 public:
     BObject();
