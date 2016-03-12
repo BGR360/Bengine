@@ -15,7 +15,9 @@ VPATH += src
 
 SOURCES += bengine.cpp \
     src/core/bobject.cpp \
-    src/core/bcomponent.cpp
+    src/core/bcomponent.cpp \
+    doc/landing-page.qdoc \
+    doc/cpp-classes.qdoc
 
 HEADERS += bengine.h\
         bengine_global.h \

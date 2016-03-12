@@ -1,0 +1,17 @@
+/*!
+
+\page index.html
+
+\title Welcome
+
+This is the documentation for the Bengine 3D Game Engine.
+
+\chapter All C++ Classes
+
+Take a look at the documentation for all of the \l {C++ Classes}.
+
+\chapter More
+
+More documentation, including tutorials and examples, coming soon!
+
+*/

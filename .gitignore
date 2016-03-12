@@ -104,7 +104,9 @@ CMakeLists.txt.user
 
 ### Project-Specific ignores ###
 
-# Ignore the documentation (it's hosted on my github.io page)
+# Ignore the HTML documentation (it's hosted on my github.io page)
 */doc/*
+!*.qdoc
+!*.qdocconfig
 
 
