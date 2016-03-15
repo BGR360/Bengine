@@ -9,15 +9,21 @@
 /*!
  * \brief Constructs a new BObject.
  */
-BObject::BObject()
-{
-
-}
+BObject::BObject() :
+    // Construct our BClass object by passing in ourselves.
+    m_class(this)
+{}
 
 /*!
  * \brief Destroys a BObject.
  */
-BObject::~BObject()
-{
+BObject::~BObject() {}
 
+/*!
+ * \brief Returns the type of this BObject as a BClass instance.
+ * \sa BClass
+ */
+const BClass& BObject::getClass() const
+{
+    return m_class;
 }

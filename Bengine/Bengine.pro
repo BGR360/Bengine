@@ -6,6 +6,8 @@
 
 QT       += widgets opengl xml
 
+CONFIG += c++11
+
 TARGET = Bengine
 TEMPLATE = lib
 
@@ -17,14 +19,16 @@ SOURCES += src/bengine.cpp \
     src/core/bclock.cpp \
     src/core/bgamecomponent.cpp \
     src/core/bgameobject.cpp \
-    src/core/bobject.cpp
+    src/core/bobject.cpp \
+    src/core/bclass.cpp
 
 HEADERS += src/bengine.h\
         src/bengine_global.h \
     src/core/bobject.h \
     src/core/bclock.h \
     src/core/bgamecomponent.h \
-    src/core/bgameobject.h
+    src/core/bgameobject.h \
+    src/core/bclass.h
 
 unix {
     target.path = /usr/lib

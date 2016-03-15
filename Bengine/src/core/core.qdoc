@@ -3,10 +3,10 @@
   \module Core
 
   \title Core Module
-  \brief The Core Module contains the core classes of the Bengine.
+  \brief Core contains the core classes of the Bengine.
   \ingroup modules
 
-  The main classes of interest are BObject and BComponent.
+  The main classes of interest are BGameObject and BGameComponent.
 
 
 */

@@ -51,7 +51,7 @@ BGameObject* BGameComponent::getGameObject() const
 }
 
 /*!
- * \brief Sets the parent BGameObject of this component to \a parent.
+ * \brief Sets the parent BGameObject of this component to \a gameObject.
  */
 void BGameComponent::setGameObject(BGameObject* gameObject)
 {
