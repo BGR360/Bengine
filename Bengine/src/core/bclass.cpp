@@ -7,7 +7,7 @@
 
 /*!
  * \class BClass
- * \brief The BClass class hold Runtime Type Information for a BObject.
+ * \brief The BClass class holds Runtime Type Information for a BObject.
  * \inmodule Core
  *
  * Every BObject instance has a BClass instance that can be acquired with

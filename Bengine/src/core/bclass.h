@@ -15,7 +15,6 @@ public:
 
     const char* name() const;
 
-    bool operator=(const BClass& other) = delete;
     bool operator==(const BClass& other) const;
     bool operator!=(const BClass& other) const;
 
