@@ -16,10 +16,12 @@ INCLUDEPATH += src
 SOURCES += src/bengine.cpp \
     src/core/bclock.cpp \
     src/core/bgamecomponent.cpp \
-    src/core/bgameobject.cpp
+    src/core/bgameobject.cpp \
+    src/core/bobject.cpp
 
 HEADERS += src/bengine.h\
         src/bengine_global.h \
+    src/core/bobject.h \
     src/core/bclock.h \
     src/core/bgamecomponent.h \
     src/core/bgameobject.h
@@ -30,7 +32,10 @@ unix {
 }
 
 DISTFILES += \
-    Bengine.qdocconfig \
-    doc/Bengine.qdocconfig
+    doc/Bengine.qdocconfig \
+    doc/cpp-classes.qdoc \
+    doc/landing-page.qdoc \
+    doc/modules.qdoc \
+    src/core/core.qdoc
 
 QMAKE_DOCS = doc/Bengine.qdocconfig

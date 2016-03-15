@@ -3,7 +3,9 @@
 
 #include <bengine_global.h>
 
-class BENGINESHARED_EXPORT BClock
+#include "bobject.h"
+
+class BENGINESHARED_EXPORT BClock : public BObject
 {
 public:
     BClock();

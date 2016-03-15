@@ -14,7 +14,9 @@
 /*!
  * \brief Constructs a new BGameObject.
  */
-BGameObject::BGameObject() {}
+BGameObject::BGameObject() :
+    m_parent(NULL)
+{}
 
 /*!
  * \brief Destroys a BGameObject.
@@ -73,4 +75,23 @@ bool BGameObject::removeComponent(BGameComponent* component)
         m_components.remove(index);
         return true;
     }
+    return false;
+}
+
+/*!
+ * \brief Sets the parent BGameObject of this game object to \a parent.
+ */
+void BGameObject::setParent(BGameObject* parent)
+{
+    m_parent = parent;
+}
+
+/*!
+ * \brief Returns the parent BGameObject of this object.
+ *
+ * If the BGameObject has no parent, returns \c null.
+ */
+BGameObject*BGameObject::getParent() const
+{
+    return m_parent;
 }

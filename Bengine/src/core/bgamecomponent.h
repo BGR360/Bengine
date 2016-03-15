@@ -1,24 +1,26 @@
-#ifndef BCOMPONENT_H
-#define BCOMPONENT_H
+#ifndef BGAMECOMPONENT_H
+#define BGAMECOMPONENT_H
 
 #include <bengine_global.h>
 
+#include "bobject.h"
+
 class BGameObject;
 
-class BENGINESHARED_EXPORT BGameComponent
+class BENGINESHARED_EXPORT BGameComponent : public BObject
 {
 public:
+    BGameComponent();
     virtual ~BGameComponent();
 
     virtual void start();
     virtual void update(float deltaSeconds);
 
     BGameObject* getGameObject() const;
-    void setGameObject(BGameObject* parent);
+    void setGameObject(BGameObject* gameObject);
 
 private:
-    BGameComponent();
-    BGameObject* m_parent;
+    BGameObject* m_gameObject;
 };
 
-#endif // BCOMPONENT_H
+#endif // BGAMECOMPONENT_H

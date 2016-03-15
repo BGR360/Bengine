@@ -1,5 +1,7 @@
 #include "bgamecomponent.h"
 
+#include "bgameobject.h"
+
 /*!
  * \class BGameComponent
  * \brief The BGameComponent class is the interface for all Game Components.
@@ -14,7 +16,7 @@
  * \brief Creates a new BGameComponent.
  */
 BGameComponent::BGameComponent() :
-    m_parent(NULL)
+    m_gameObject(NULL)
 {}
 
 /*!
@@ -37,7 +39,7 @@ void BGameComponent::start() {}
 
   Override this function in any subclass of BGameComponent.
 */
-void BGameComponent::update(float deltaSeconds) {}
+void BGameComponent::update(float) {}
 
 /*!
  * \brief Returns the BGameObject that owns this component.
@@ -45,14 +47,14 @@ void BGameComponent::update(float deltaSeconds) {}
  */
 BGameObject* BGameComponent::getGameObject() const
 {
-    return m_parent;
+    return m_gameObject;
 }
 
 /*!
  * \brief Sets the parent BGameObject of this component to \a parent.
  */
-void BGameComponent::setGameObject(BGameObject* parent)
+void BGameComponent::setGameObject(BGameObject* gameObject)
 {
-    m_parent = parent;
+    m_gameObject = gameObject;
 }
 

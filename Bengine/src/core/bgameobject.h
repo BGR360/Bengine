@@ -1,13 +1,15 @@
-#ifndef BOBJECT_H
-#define BOBJECT_H
-
-#include <qvector.h>
+#ifndef BGAMEOBJECT_H
+#define BGAMEOBJECT_H
 
 #include <bengine_global.h>
 
+#include <qvector.h>
+
+#include "bobject.h"
+
 class BGameComponent;
 
-class BENGINESHARED_EXPORT BGameObject
+class BENGINESHARED_EXPORT BGameObject : public BObject
 {
 public:
     BGameObject();
@@ -17,9 +19,12 @@ public:
     void addComponent(BGameComponent* component);
     bool removeComponent(BGameComponent* component);
 
+    void setParent(BGameObject* parent);
+    BGameObject* getParent() const;
+
 private:
-    // A BGameObject has ownership of its BGameComponents
+    BGameObject* m_parent;
     QVector<BGameComponent*> m_components;
 };
 
-#endif // BOBJECT_H
+#endif // BGAMEOBJECT_H
