@@ -14,19 +14,15 @@ DEFINES += BENGINE_LIBRARY
 INCLUDEPATH += src
 
 SOURCES += src/bengine.cpp \
-    src/core/bobject.cpp \
-    src/core/bcomponent.cpp \
-    doc/landing-page.qdoc \
-    doc/cpp-classes.qdoc \
-    src/core/core.qdoc \
-    doc/modules.qdoc \
-    src/core/bclock.cpp
+    src/core/bclock.cpp \
+    src/core/bgamecomponent.cpp \
+    src/core/bgameobject.cpp
 
 HEADERS += src/bengine.h\
         src/bengine_global.h \
-    src/core/bobject.h \
-    src/core/bcomponent.h \
-    src/core/bclock.h
+    src/core/bclock.h \
+    src/core/bgamecomponent.h \
+    src/core/bgameobject.h
 
 unix {
     target.path = /usr/lib
