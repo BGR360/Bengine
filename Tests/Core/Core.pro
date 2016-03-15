@@ -1,6 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    Core
+    GameObjectGameComponent \
+    BObject
 
 CONFIG += testcase
