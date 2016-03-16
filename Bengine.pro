@@ -4,5 +4,5 @@ CONFIG += c++11
 
 SUBDIRS += \
     Bengine \
-    Tests \
-    Editor
+    Editor \
+    Tests

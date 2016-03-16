@@ -41,6 +41,14 @@ QVector<BGameComponent*> BGameObject::getComponents() const
 }
 
 /*!
+ * \brief Returns the number of BGameComponent objects owned by this object.
+ */
+int BGameObject::numComponents() const
+{
+    return m_components.size();
+}
+
+/*!
  * Adds \a component to this object's list of components.
  *
  * Automatically sets the parent of \a component to \c this.
@@ -62,6 +70,9 @@ void BGameObject::addComponent(BGameComponent* component)
  * Automatically sets the parent of \a component to \c null if removed.
  *
  * Returns \c true if \a component was owned by this BGameObject and removed; \c false otherwise.
+ *
+ * \b{Note:} If you remove a BGameComponent from a BGameObject, it is \b{your} responsibility
+ * to free its memory to avoid a memory leak.
  */
 bool BGameObject::removeComponent(BGameComponent* component)
 {
@@ -84,6 +95,14 @@ bool BGameObject::removeComponent(BGameComponent* component)
 void BGameObject::setParent(BGameObject* parent)
 {
     m_parent = parent;
+}
+
+/*!
+ * \brief Returns \c true if this game object has a parent, \c false if it is the root object.
+ */
+bool BGameObject::hasParent() const
+{
+    return m_parent != NULL;
 }
 
 /*!

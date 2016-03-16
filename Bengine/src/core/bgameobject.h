@@ -16,11 +16,20 @@ public:
     virtual ~BGameObject();
 
     QVector<BGameComponent*> getComponents() const;
+    int numComponents() const;
     void addComponent(BGameComponent* component);
     bool removeComponent(BGameComponent* component);
 
-    void setParent(BGameObject* parent);
     BGameObject* getParent() const;
+    void setParent(BGameObject* parent);
+    bool hasParent() const;
+
+    // TODO: isChildOf()
+    // TODO: isDescendentOf()
+    // TODO: hasChildren()
+    // TODO: numChildren()
+    // TODO: addChild()
+    // TODO: removeChild()
 
 private:
     BGameObject* m_parent;
