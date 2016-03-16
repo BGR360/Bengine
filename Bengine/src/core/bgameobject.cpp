@@ -35,7 +35,7 @@ BGameObject::~BGameObject()
 /*!
  * Returns the game components that this BGameObject has.
  */
-QVector<BGameComponent*> BGameObject::getComponents() const
+const QVector<BGameComponent*>& BGameObject::getComponents() const
 {
     return m_components;
 }
@@ -51,7 +51,9 @@ int BGameObject::numComponents() const
 /*!
  * Adds \a component to this object's list of components.
  *
- * Automatically sets the parent of \a component to \c this.
+ * If \a component already belongs to this object, it will not be added again.
+ * Also, if \a coponent already belongs to another BGameObject, it will not be added to this.
+ * If the component is added, it automatically sets the owner of \a component to \c this.
  *
  * \b{Note:} A BGameObject has ownership of its BGameComponent objects and is responsible for deleting them.
  */
@@ -59,8 +61,11 @@ void BGameObject::addComponent(BGameComponent* component)
 {
     if (component)
     {
-        component->setGameObject(this);
-        m_components.push_back(component);
+        if (component->getGameObject() == NULL)
+        {
+            component->setGameObject(this);
+            m_components.push_back(component);
+        }
     }
 }
 
@@ -90,7 +95,30 @@ bool BGameObject::removeComponent(BGameComponent* component)
 }
 
 /*!
+ * \brief Returns the parent BGameObject of this object.
+ *
+ * If the BGameObject has no parent, returns \c null.
+ */
+BGameObject* BGameObject::getParent()
+{
+    return NULL;
+}
+
+/*!
+ * \brief Returns the parent BGameObject of this object.
+ *
+ * If the BGameObject has no parent, returns \c null.
+ */
+const BGameObject* BGameObject::getParent() const
+{
+    return m_parent;
+}
+
+/*!
  * \brief Sets the parent BGameObject of this game object to \a parent.
+ *
+ * If this object was previously the child of another game object, it will notify
+ * the other game object that it's about to peace out.
  */
 void BGameObject::setParent(BGameObject* parent)
 {
@@ -106,11 +134,81 @@ bool BGameObject::hasParent() const
 }
 
 /*!
- * \brief Returns the parent BGameObject of this object.
- *
- * If the BGameObject has no parent, returns \c null.
+ * \brief Returns \c true if this object is a \b{direct} parent of \a other, \c false otherwise.
  */
-BGameObject*BGameObject::getParent() const
+bool BGameObject::isParentOf(const BGameObject* other) const
 {
-    return m_parent;
+    return false;
+}
+
+/*!
+ * \brief Returns \c true if there is a chain of children which connects this
+ * game object to \a other, \c false otherwise.
+ */
+bool BGameObject::isAncestorOf(const BGameObject* other) const
+{
+    return false;
+}
+
+/*!
+ * \brief Returns a list of this object's child game objects.
+ */
+const QVector<BGameObject*>& BGameObject::getChildren() const
+{
+    return QVector<BGameObject*>();
+}
+
+/*!
+ * \brief Returns \c true if this object is a \b{direct} child of \a other, \c false otherwise.
+ */
+bool BGameObject::isChildOf(const BGameObject* other) const
+{
+    return false;
+}
+
+/*!
+ * \brief Returns \c true if there is a chain of parent game objects that connect this object
+ * to \a other, \c false otherwise.
+ */
+bool BGameObject::isDescendentOf(const BGameObject* other) const
+{
+    return false;
+}
+
+/*!
+ * \brief Returns \c true if this game object has any child game objects, \c false otherwise.
+ */
+bool BGameObject::hasChildren() const
+{
+    return false;
+}
+
+/*!
+ * \brief Returns the number of child game objects that this object has.
+ */
+int BGameObject::numChildren() const
+{
+    return 0;
+}
+
+/*!
+ * \brief Designates \a child as a child of this game object.
+ *
+ * If \a child is already a child of this or any other game object,
+ * it will not be added as a child to this.
+ */
+void BGameObject::addChild(BGameObject* child)
+{
+
+}
+
+/*!
+ * \brief Designates that \a child should no longer be a child of this game object.
+ *
+ * Returns \c true if \a other was initially a child of this game object and if it
+ * was removed, \c false otherwise.
+ */
+bool BGameObject::removeChild(BGameObject* child)
+{
+    return false;
 }

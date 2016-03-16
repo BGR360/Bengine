@@ -20,8 +20,8 @@
 /*!
  * \brief Constructs a new BClass instance that holds the class information of \a object.
  */
-BClass::BClass(const BObject* object)
-    : m_type_info(typeid(*object))
+BClass::BClass(const BObject& object)
+    : m_type_info(typeid(object))
 {}
 
 /*!
@@ -35,7 +35,7 @@ BClass::~BClass()
  */
 const char* BClass::name() const
 {
-    return "";
+    return m_type_info.name();
 }
 
 /*!
@@ -45,7 +45,7 @@ const char* BClass::name() const
  */
 bool BClass::operator==(const BClass& other) const
 {
-    return false;
+    return m_type_info == other.m_type_info;
 }
 
 /*!
@@ -55,5 +55,5 @@ bool BClass::operator==(const BClass& other) const
  */
 bool BClass::operator!=(const BClass& other) const
 {
-    return false;
+    return m_type_info != other.m_type_info;
 }

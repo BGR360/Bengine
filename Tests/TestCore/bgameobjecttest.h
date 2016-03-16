@@ -17,8 +17,14 @@ private slots:
     void addRepeatComponents();
     void addComponentsToOtherObject();
     void removeComponents();
+    void setParent();
     void hasParent();
-    void gameObjectTree();
+    void gameObjectFamilyTree();
+
+    void addAndRemoveChildren();
+    void addRepeatChildren();
+    void reassignChildren();
+    void removeIllegalChildren();
 };
 
 #endif // BGAMEOBJECTTEST_H

@@ -13,7 +13,7 @@ public:
 
     const BClass& getClass() const;
 
-private:
+protected:
     BClass m_class;
 };
 

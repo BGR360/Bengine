@@ -10,7 +10,7 @@ class BObject;
 class BClass
 {
 public:
-    BClass(const BObject* object);
+    BClass(const BObject& object);
     ~BClass();
 
     const char* name() const;

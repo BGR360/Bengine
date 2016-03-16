@@ -16,6 +16,8 @@ void BGameObjectTest::construct()
     QCOMPARE(gameObject.numComponents(), 0);
     BGameObject* expectedParent = NULL;
     QCOMPARE(gameObject.getParent(), expectedParent);
+    QCOMPARE(gameObject.hasChildren(), false);
+    QCOMPARE(gameObject.numChildren(), 0);
 }
 
 void BGameObjectTest::numComponents()
@@ -136,6 +138,37 @@ void BGameObjectTest::removeComponents()
     delete comp2;
 }
 
+void BGameObjectTest::setParent()
+{
+    // This tests to make sure the proper stuff happens when you reassign the parent of a game object
+    // Tests getParent(), hasChildren(), addChild(), isChildOf()
+    BGameObject* parent0 = new BGameObject;
+    BGameObject* parent1 = new BGameObject;
+    BGameObject* child = new BGameObject;
+
+    QVERIFY(!child->hasParent());
+
+    parent0->addChild(child);
+    QVERIFY2(child->getParent() == parent0,
+             "child's parent should be parent0. We called addChild()");
+
+    // Reassign child to be a child of parent1
+    child->setParent(parent1);
+
+    QVERIFY2(child->getParent() == parent1,
+             "child's parent should now be parent1.");
+    QVERIFY2(!parent0->hasChildren(),
+             "parent0 should no longer have any children");
+
+    child->setParent(NULL);
+    QVERIFY2(!parent1->hasChildren(),
+             "parent1 should no longer have any children. We set parent to NULL.");
+
+    delete parent0;
+    delete parent1;
+    delete child;
+}
+
 void BGameObjectTest::hasParent()
 {
     // Tests to make sure that setParent() properly updates the value of the hasParent() property
@@ -167,10 +200,38 @@ void BGameObjectTest::hasParent()
     delete child;
 }
 
-void BGameObjectTest::gameObjectTree()
+void BGameObjectTest::gameObjectFamilyTree()
 {
-    // Constructs a simple GameObject tree and tests everybody's hasParent() properties for correctness
+    // Constructs a simple GameObject tree and tests the following functions:
+    // isChildOf(), isParentOf(), isDescendentOf(), isAncestorOf()
     QFAIL("Need to implement this functionality");
+}
+
+void BGameObjectTest::addAndRemoveChildren()
+{
+    // Tests addChild(), removeChild(), and numChildren()
+    QFAIL("");
+}
+
+void BGameObjectTest::addRepeatChildren()
+{
+    // Tests to make sure that we can't add a child to an object twice.
+    QFAIL("");
+}
+
+void BGameObjectTest::reassignChildren()
+{
+    // Tests to make sure that we can't add a child to a game object if it's already the child
+    // of another game object.
+    // Tests to make sure that we CAN reassign an object's parent by using setParent() instead
+    QFAIL("");
+}
+
+void BGameObjectTest::removeIllegalChildren()
+{
+    // Tests to make sure that nothing happens when you call removeChild() when the object
+    // is not actually a child of it.
+    QFAIL("");
 }
 
 

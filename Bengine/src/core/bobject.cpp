@@ -11,7 +11,7 @@
  */
 BObject::BObject() :
     // Construct our BClass object by passing in ourselves.
-    m_class(this)
+    m_class(*this)
 {}
 
 /*!

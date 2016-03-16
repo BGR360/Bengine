@@ -12,7 +12,9 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    bgameobjecttest.cpp
+    bgameobjecttest.cpp \
+    bclasstest.cpp
 
 HEADERS += \
-    bgameobjecttest.h
+    bgameobjecttest.h \
+    bclasstest.h
