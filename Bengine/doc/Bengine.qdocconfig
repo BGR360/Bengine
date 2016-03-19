@@ -3,6 +3,8 @@
 project = Bengine
 description = My 3D C++ Game Engine written using Qt
 
+syntaxhighlighting = true
+
 sourcedirs = ../src .
 headerdirs = ../src
 

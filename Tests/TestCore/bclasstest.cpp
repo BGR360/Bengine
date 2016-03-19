@@ -17,9 +17,9 @@ void BClassTest::constructFromInstance()
     QVERIFY(bclass.name());
 }
 
-void BClassTest::constructFromType()
+void BClassTest::constructFromTypeIndex()
 {
-    // Tests to make sure we can construct a BClass with a type like 'BObject'
+    // Tests that we can construct a BClass instance from a std::type_info or std::type_index object
     BClass bclass(typeid(BObject));
     QVERIFY(bclass.name());
 }

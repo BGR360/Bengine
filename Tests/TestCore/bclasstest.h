@@ -12,7 +12,7 @@ public:
 
 private slots:
     void constructFromInstance();
-    void constructFromType();
+    void constructFromTypeIndex();
     void compareEqual();
     void compareInequal();
     void testName();

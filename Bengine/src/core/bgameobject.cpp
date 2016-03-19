@@ -119,7 +119,7 @@ const BGameObject* BGameObject::getParent() const
 }
 
 /*!
- * \brief Sets the parent BGameObject of this game object to \a parent.
+ * \brief Sets the parent BGameObject of this game object to \a newParent.
  *
  * If this object was previously the child of another game object, it will notify
  * the other game object that it's about to peace out.

@@ -10,9 +10,41 @@
  * \brief The BClass class holds Runtime Type Information for a BObject.
  * \inmodule Core
  *
- * Every BObject instance has a BClass instance that can be acquired with
- * BObject::getClass(). The BClass object holds the Runtime Type Information
+ * The BClass object holds the Runtime Type Information
  * of the BObject and can be used to compare types and cast BObjects.
+ *
+ * Every BObject instance has a BClass instance that can be acquired with
+ * BObject::getClass().
+ *
+ * Additionally, any classes that inherit from BObject and use the B_OBJECT macro
+ * can statically return a BClass instance using the getStaticClass() function.
+ *
+ * For example, if you define a subclass of BObject like so:
+ *
+ * \code
+ * class SubClass : public BObject
+ * {
+ *      B_OBJECT(SubClass)
+ *
+ * public:
+ *      SubClass();
+ *      ~SubClass();
+ * };
+ * \endcode
+ *
+ * Then you can acquire a BClass instance in two different ways:
+ *
+ * \code
+ * int main()
+ * {
+ *      SubClass instance;
+ *      BClass instanceClass = instance.getClass();
+ *      BClass staticClass = SubClass::getStaticClass();
+ *
+ *      qDebug() << (instanceClass == staticClass);     // Will print true
+ *      return 0;
+ * }
+ * \endcode
  *
  * \sa BObject
  */
