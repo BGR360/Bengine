@@ -9,7 +9,7 @@ BClassTest::BClassTest()
 
 }
 
-void BClassTest::construct()
+void BClassTest::constructFromInstance()
 {
     // Tests to make sure we can construct a BClass with a BObject*
     BObject object;
@@ -17,8 +17,17 @@ void BClassTest::construct()
     QVERIFY(bclass.name());
 }
 
+void BClassTest::constructFromType()
+{
+    // Tests to make sure we can construct a BClass with a type like 'BObject'
+    BClass bclass(typeid(BObject));
+    QVERIFY(bclass.name());
+}
+
 class ClassA : public BObject
 {
+    B_OBJECT(ClassA)
+
 public:
     ClassA()
     {
@@ -28,6 +37,8 @@ public:
 
 class ClassB : public BObject
 {
+    B_OBJECT(ClassB)
+
 public:
     ClassB()
     {
@@ -77,4 +88,22 @@ void BClassTest::testName()
 
     delete a;
     delete b;
+}
+
+void BClassTest::getStaticClass()
+{
+    BObject object;
+    BClass instanceClass = object.getClass();
+    BClass staticClass = BObject::getStaticClass();
+
+    QVERIFY(instanceClass == staticClass);
+}
+
+void BClassTest::getStaticClassForSubclass()
+{
+    ClassA a;
+    BClass instanceClass = a.getClass();
+    BClass staticClass = ClassA::getStaticClass();
+
+    QVERIFY(instanceClass == staticClass);
 }

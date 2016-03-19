@@ -5,8 +5,18 @@
 
 #include "bclass.h"
 
+// Define the macro for declaring a B_OBJECT subclass (similar to how Q_OBJECT works)
+#define B_OBJECT(classname) \
+public: \
+    static BClass getStaticClass() { return BClass(typeid(classname)); } \
+private:
+
+
+//B_CLASS(BObject)
 class BENGINESHARED_EXPORT BObject
 {
+    B_OBJECT(BObject)
+
 public:
     BObject();
     virtual ~BObject();

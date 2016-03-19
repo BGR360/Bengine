@@ -25,6 +25,17 @@ BClass::BClass(const BObject& object)
 {}
 
 /*!
+ * \brief Constructs a new BClass instance that holds the same type info as the
+ * std::type_index object \a type.
+ *
+ * This function is used by the B_CLASS_OF() macro to construct a generic
+ * BClass instance for a type rather than for an object.
+ */
+BClass::BClass(const std::__1::type_index& type) :
+    m_type_info(type)
+{}
+
+/*!
  * \brief Destroys a BClass object.
  */
 BClass::~BClass()

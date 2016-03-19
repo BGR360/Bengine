@@ -11,6 +11,7 @@ class BClass
 {
 public:
     BClass(const BObject& object);
+    BClass(const std::type_index& type);
     ~BClass();
 
     const char* name() const;

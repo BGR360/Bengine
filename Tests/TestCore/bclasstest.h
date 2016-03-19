@@ -11,10 +11,13 @@ public:
     BClassTest();
 
 private slots:
-    void construct();
+    void constructFromInstance();
+    void constructFromType();
     void compareEqual();
     void compareInequal();
     void testName();
+    void getStaticClass();
+    void getStaticClassForSubclass();
 };
 
 #endif // BCLASSTEST_H
