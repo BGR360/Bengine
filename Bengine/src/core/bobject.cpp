@@ -12,21 +12,10 @@
 
   In order to subclass BObject, you must include the \l B_OBJECT macro somewhere in the class declaration:
 
-  \code
-  #include <core/bobject.h>
-
-  class SubClass : public BObject
-  {
-    B_OBJECT(SubClass)
-
-  public:
-    SubClass();
-    ~SubClass();
-  };
-  \endcode
+  \snippet bobject/subclass.h 0
 
   This macro does some background magic which will allow the engine to supply things like
-  static type info (see the \l BClass class) through the getStaticClass() function.
+  static type info (see the \l BClass documentation) through the getStaticClass() function.
 */
 
 /*!
@@ -36,18 +25,7 @@
   Include this macro in your class definition when subclassing BObject.
   To use this macro, include the name of your class in the \a className parameter, as such:
 
-  \code
-  #include <core/bobject.h>
-
-  class SubClass : public BObject
-  {
-    B_OBJECT(SubClass)
-
-  public:
-    SubClass();
-    ~SubClass();
-  };
-  \endcode
+  \snippet bobject/subclass.h 0
 */
 
 /*!
@@ -65,7 +43,6 @@ BObject::~BObject() {}
 
 /*!
  * \brief Returns the type of this BObject as a BClass instance.
- * \sa BClass
  */
 const BClass& BObject::getClass() const
 {

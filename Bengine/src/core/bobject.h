@@ -27,4 +27,11 @@ protected:
     BClass m_class;
 };
 
+
+// Here is a macro for specifying documentation for BObject subclasses
+#define B_OBJECT_DOC(classname) \
+    /*! \
+    \fn static BClass classname::getStaticClass() \
+    */
+
 #endif // BOBJECT_H

@@ -7,6 +7,8 @@
 
 class BENGINESHARED_EXPORT BClock : public BObject
 {
+    B_OBJECT(BClock)
+
 public:
     BClock();
     virtual ~BClock();

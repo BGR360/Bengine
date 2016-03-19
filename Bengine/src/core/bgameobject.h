@@ -11,6 +11,8 @@ class BGameComponent;
 
 class BENGINESHARED_EXPORT BGameObject : public BObject
 {
+    B_OBJECT(BGameObject)
+
 public:
     BGameObject();
     virtual ~BGameObject();

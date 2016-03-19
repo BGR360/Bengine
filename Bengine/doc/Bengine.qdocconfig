@@ -4,9 +4,15 @@ project = Bengine
 description = My 3D C++ Game Engine written using Qt
 
 syntaxhighlighting = true
+defines = B_OBJECT
+language = Cpp
 
 sourcedirs = ../src .
 headerdirs = ../src
+
+exampledirs = ../examples
+
+spurious = ".*BClass\(\).*"
 
 sources.fileextensions = "*.cpp *.qdoc *.mm *.qml"
 headers.fileextensions = "*.h *.ch *.h++ *.hh *.hpp *.hxx"

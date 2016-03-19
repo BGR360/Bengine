@@ -21,30 +21,11 @@
  *
  * For example, if you define a subclass of BObject like so:
  *
- * \code
- * class SubClass : public BObject
- * {
- *      B_OBJECT(SubClass)
- *
- * public:
- *      SubClass();
- *      ~SubClass();
- * };
- * \endcode
+ * \snippet bobject/subclass.h 0
  *
  * Then you can acquire a BClass instance in two different ways:
  *
- * \code
- * int main()
- * {
- *      SubClass instance;
- *      BClass instanceClass = instance.getClass();
- *      BClass staticClass = SubClass::getStaticClass();
- *
- *      qDebug() << (instanceClass == staticClass);     // Will print true
- *      return 0;
- * }
- * \endcode
+ * \snippet bobject/subclass_main.cpp 0
  *
  * \sa BObject
  */

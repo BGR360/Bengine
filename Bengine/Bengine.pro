@@ -15,20 +15,9 @@ DEFINES += BENGINE_LIBRARY
 
 INCLUDEPATH += src
 
-SOURCES += src/bengine.cpp \
-    src/core/bclock.cpp \
-    src/core/bgamecomponent.cpp \
-    src/core/bgameobject.cpp \
-    src/core/bobject.cpp \
-    src/core/bclass.cpp
+SOURCES += $$files(src/*.cpp, true)
 
-HEADERS += src/bengine.h\
-        src/bengine_global.h \
-    src/core/bobject.h \
-    src/core/bclock.h \
-    src/core/bgamecomponent.h \
-    src/core/bgameobject.h \
-    src/core/bclass.h
+HEADERS += $$files(src/*.h, true)
 
 unix {
     target.path = /usr/lib
@@ -36,10 +25,9 @@ unix {
 }
 
 DISTFILES += \
-    doc/Bengine.qdocconfig \
-    doc/cpp-classes.qdoc \
-    doc/landing-page.qdoc \
-    doc/modules.qdoc \
-    src/core/core.qdoc
+    $$files(doc/*.qdocconfig, true) \
+    $$files(doc/*.qdoc, true) \
+    $$files(examples/*.h, true) \
+    $$files(examples/*.cpp, true)
 
 QMAKE_DOCS = doc/Bengine.qdocconfig

@@ -6,8 +6,6 @@
  * between frames.
  * \inmodule Core
  *
- * \reentrant
- *
  * The BClock class can be used to query the current time since the last update
  * (see \l getDelta) or since the clock started (see getTime).
  */
