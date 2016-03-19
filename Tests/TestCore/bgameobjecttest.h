@@ -24,7 +24,7 @@ private slots:
     void addAndRemoveChildren();
     void addRepeatChildren();
     void reassignChildren();
-    void removeIllegalChildren();
+    void passNullStuff();
 };
 
 #endif // BGAMEOBJECTTEST_H

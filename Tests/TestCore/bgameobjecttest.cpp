@@ -149,6 +149,8 @@ void BGameObjectTest::setParent()
     QVERIFY(!child->hasParent());
 
     parent0->addChild(child);
+    QVERIFY2(parent0->hasChildren(),
+             "parent0->hasChildren() should return true. We added child to it.");
     QVERIFY2(child->getParent() == parent0,
              "child's parent should be parent0. We called addChild()");
 
@@ -204,19 +206,100 @@ void BGameObjectTest::gameObjectFamilyTree()
 {
     // Constructs a simple GameObject tree and tests the following functions:
     // isChildOf(), isParentOf(), isDescendentOf(), isAncestorOf()
-    QFAIL("Need to implement this functionality");
+    BGameObject* parent = new BGameObject;
+    BGameObject* son = new BGameObject;
+    BGameObject* daughter = new BGameObject;
+    BGameObject* granddaughter = new BGameObject;
+    BGameObject* grandson = new BGameObject;
+
+    // Set up the family tree
+    son->addChild(grandson);
+    daughter->addChild(granddaughter);
+    parent->addChild(son);
+    parent->addChild(daughter);
+
+    // Test ancestors and shit
+    QVERIFY(parent->isParentOf(son));
+    QVERIFY(parent->isParentOf(daughter));
+    QVERIFY(parent->isAncestorOf(son));
+    QVERIFY(parent->isAncestorOf(daughter));
+    QVERIFY(!parent->isParentOf(grandson));
+    QVERIFY(!parent->isParentOf(granddaughter));
+    QVERIFY(parent->isAncestorOf(granddaughter));
+    QVERIFY(parent->isAncestorOf(grandson));
+
+    QVERIFY(son->isChildOf(parent));
+    QVERIFY(son->isDescendentOf(parent));
+    QVERIFY(son->isParentOf(grandson));
+    QVERIFY(son->isAncestorOf(grandson));
+    QVERIFY(!son->isParentOf(granddaughter));
+
+    QVERIFY(daughter->isChildOf(parent));
+    QVERIFY(daughter->isDescendentOf(parent));
+    QVERIFY(daughter->isParentOf(granddaughter));
+    QVERIFY(daughter->isAncestorOf(granddaughter));
+    QVERIFY(!daughter->isParentOf(grandson));
+
+    QVERIFY(grandson->isDescendentOf(parent));
+    QVERIFY(grandson->isDescendentOf(son));
+    QVERIFY(grandson->isChildOf(son));
+    QVERIFY(!grandson->isChildOf(parent));
+
+    QVERIFY(granddaughter->isDescendentOf(parent));
+    QVERIFY(granddaughter->isDescendentOf(daughter));
+    QVERIFY(granddaughter->isChildOf(daughter));
+    QVERIFY(!granddaughter->isChildOf(parent));
 }
 
 void BGameObjectTest::addAndRemoveChildren()
 {
-    // Tests addChild(), removeChild(), and numChildren()
-    QFAIL("");
+    // Tests addChild(), removeChild(), and numChildren(), and isChildOf()
+    BGameObject* parent = new BGameObject;
+    BGameObject* child0 = new BGameObject;
+    BGameObject* child1 = new BGameObject;
+    BGameObject* child2 = new BGameObject;
+    BGameObject* estrangedChild = new BGameObject;
+
+    QCOMPARE(parent->numChildren(), 0);
+
+    parent->addChild(child0);
+    parent->addChild(child1);
+    parent->addChild(child2);
+
+    QCOMPARE(parent->numChildren(), 3);
+
+    QVERIFY(child0->isChildOf(parent));
+    QVERIFY(child1->isChildOf(parent));
+    QVERIFY(child2->isChildOf(parent));
+    QVERIFY(!estrangedChild->isChildOf(parent));
+
+    // Test removing children
+    QVERIFY2(parent->removeChild(child1), "removeChild() should return true on success");
+    QVERIFY2(parent->removeChild(child2), "removeChild() should return true on success");
+
+    QCOMPARE(parent->numChildren(), 1);
+
+    // Removing a non-child shouldnt change the number of children
+    QVERIFY2(!parent->removeChild(estrangedChild), "removeChild() should return false on failure");
+
+    delete parent;
+    delete estrangedChild;
+    delete child1;
+    delete child2;
 }
 
 void BGameObjectTest::addRepeatChildren()
 {
     // Tests to make sure that we can't add a child to an object twice.
-    QFAIL("");
+    BGameObject* parent = new BGameObject;
+    BGameObject* repeatChild = new BGameObject;
+
+    parent->addChild(repeatChild);
+    QCOMPARE(parent->numChildren(), 1);
+    parent->addChild(repeatChild);
+    QCOMPARE(parent->numChildren(), 1);
+
+    delete parent;
 }
 
 void BGameObjectTest::reassignChildren()
@@ -224,14 +307,52 @@ void BGameObjectTest::reassignChildren()
     // Tests to make sure that we can't add a child to a game object if it's already the child
     // of another game object.
     // Tests to make sure that we CAN reassign an object's parent by using setParent() instead
-    QFAIL("");
+    BGameObject* parent0 = new BGameObject;
+    BGameObject* parent1 = new BGameObject;
+    BGameObject* child0 = new BGameObject;
+    BGameObject* child1 = new BGameObject;
+
+    parent0->addChild(child0);
+    parent1->addChild(child1);
+
+    QCOMPARE(parent0->numChildren(), 1);
+    QCOMPARE(parent1->numChildren(), 1);
+
+    // Cannot add a game object that's already another one's child
+    parent0->addChild(child1);
+    QCOMPARE(parent0->numChildren(), 1);
+
+    // But we can reassign it using setParent()
+    child1->setParent(parent0);
+    QCOMPARE(parent0->numChildren(), 2);
+    QCOMPARE(parent1->numChildren(), 0);
+    QVERIFY(child1->isChildOf(parent0));
+    QVERIFY(parent0->isParentOf(child1));
+
+    delete parent0;
+    delete parent1;
 }
 
-void BGameObjectTest::removeIllegalChildren()
+void BGameObjectTest::passNullStuff()
 {
-    // Tests to make sure that nothing happens when you call removeChild() when the object
-    // is not actually a child of it.
-    QFAIL("");
+    BGameObject* parent = new BGameObject;
+    BGameObject* child = new BGameObject;
+    BGameComponent* comp = new BGameComponent;
+
+    parent->addChild(child);
+    parent->addComponent(comp);
+
+    parent->addChild(NULL);
+    parent->addComponent(NULL);
+    QVERIFY(!parent->isAncestorOf(NULL));
+    QVERIFY(!parent->isParentOf(NULL));
+    QVERIFY(!child->isDescendentOf(NULL));
+    QVERIFY(!child->isChildOf(NULL));
+    QVERIFY(!parent->removeChild(NULL));
+    QVERIFY(!parent->removeComponent(NULL));
+    child->setParent(NULL);
+
+    delete parent;
 }
 
 

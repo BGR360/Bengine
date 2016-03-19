@@ -32,6 +32,9 @@ BClass::~BClass()
 
 /*!
  * \brief Returns the name of the class as a \c {const char*}.
+ *
+ * \b{Note:} The name that this function returns is implementation dependent and is rarely
+ * exactly equivalent to the name of the class.
  */
 const char* BClass::name() const
 {

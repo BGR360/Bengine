@@ -30,6 +30,13 @@ BGameObject::~BGameObject()
         delete *i;
     }
     m_components.clear();
+
+    // Delete all children
+    QVector<BGameObject*>::iterator e;
+    for (e = m_children.begin(); e != m_children.end(); e++)
+    {
+        delete *e;
+    }
 }
 
 /*!
@@ -52,20 +59,17 @@ int BGameObject::numComponents() const
  * Adds \a component to this object's list of components.
  *
  * If \a component already belongs to this object, it will not be added again.
- * Also, if \a coponent already belongs to another BGameObject, it will not be added to this.
+ * Also, if \a component already belongs to another BGameObject, it will not be added to this.
  * If the component is added, it automatically sets the owner of \a component to \c this.
  *
  * \b{Note:} A BGameObject has ownership of its BGameComponent objects and is responsible for deleting them.
  */
 void BGameObject::addComponent(BGameComponent* component)
 {
-    if (component)
+    if (component && component->getGameObject() == NULL)
     {
-        if (component->getGameObject() == NULL)
-        {
-            component->setGameObject(this);
-            m_components.push_back(component);
-        }
+        component->setGameObject(this);
+        m_components.push_back(component);
     }
 }
 
@@ -101,7 +105,7 @@ bool BGameObject::removeComponent(BGameComponent* component)
  */
 BGameObject* BGameObject::getParent()
 {
-    return NULL;
+    return m_parent;
 }
 
 /*!
@@ -120,9 +124,24 @@ const BGameObject* BGameObject::getParent() const
  * If this object was previously the child of another game object, it will notify
  * the other game object that it's about to peace out.
  */
-void BGameObject::setParent(BGameObject* parent)
+void BGameObject::setParent(BGameObject* newParent)
 {
-    m_parent = parent;
+    // If this object is already a child of another, reassign its parenthood.
+    // Otherwise, it's safe to simply set the value of m_parent
+    BGameObject* previousParent = m_parent;
+    if (previousParent && newParent != previousParent)
+    {
+        previousParent->removeChild(this);
+    }
+
+    if (newParent)
+    {
+        newParent->addChild(this);
+    }
+    else
+    {
+        m_parent = NULL;
+    }
 }
 
 /*!
@@ -138,7 +157,7 @@ bool BGameObject::hasParent() const
  */
 bool BGameObject::isParentOf(const BGameObject* other) const
 {
-    return false;
+    return other && other->isChildOf(this);
 }
 
 /*!
@@ -147,7 +166,7 @@ bool BGameObject::isParentOf(const BGameObject* other) const
  */
 bool BGameObject::isAncestorOf(const BGameObject* other) const
 {
-    return false;
+    return other && other->isDescendentOf(this);
 }
 
 /*!
@@ -155,7 +174,7 @@ bool BGameObject::isAncestorOf(const BGameObject* other) const
  */
 const QVector<BGameObject*>& BGameObject::getChildren() const
 {
-    return QVector<BGameObject*>();
+    return m_children;
 }
 
 /*!
@@ -163,7 +182,7 @@ const QVector<BGameObject*>& BGameObject::getChildren() const
  */
 bool BGameObject::isChildOf(const BGameObject* other) const
 {
-    return false;
+    return other && other == m_parent;
 }
 
 /*!
@@ -172,7 +191,13 @@ bool BGameObject::isChildOf(const BGameObject* other) const
  */
 bool BGameObject::isDescendentOf(const BGameObject* other) const
 {
-    return false;
+    if (this->isChildOf(other))
+        return true;
+
+    if (!m_parent)
+        return false;
+
+    return m_parent->isDescendentOf(other);
 }
 
 /*!
@@ -180,7 +205,7 @@ bool BGameObject::isDescendentOf(const BGameObject* other) const
  */
 bool BGameObject::hasChildren() const
 {
-    return false;
+    return this->numChildren() > 0;
 }
 
 /*!
@@ -188,7 +213,7 @@ bool BGameObject::hasChildren() const
  */
 int BGameObject::numChildren() const
 {
-    return 0;
+    return m_children.size();
 }
 
 /*!
@@ -199,16 +224,34 @@ int BGameObject::numChildren() const
  */
 void BGameObject::addChild(BGameObject* child)
 {
-
+    if (child && !child->hasParent())
+    {
+        child->m_parent = this;
+        m_children.push_back(child);
+    }
 }
 
 /*!
  * \brief Designates that \a child should no longer be a child of this game object.
  *
- * Returns \c true if \a other was initially a child of this game object and if it
+ * Returns \c true if \a child was initially a child of this game object and if it
  * was removed, \c false otherwise.
  */
 bool BGameObject::removeChild(BGameObject* child)
 {
+    if (child)
+    {
+        if (child->getParent() == this)
+        {
+            child->m_parent = NULL;
+        }
+
+        int index = m_children.indexOf(child);
+        if (index == -1)
+            return false;
+
+        m_children.remove(index);
+        return true;
+    }
     return false;
 }

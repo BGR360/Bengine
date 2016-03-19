@@ -22,7 +22,7 @@ public:
 
     BGameObject* getParent();
     const BGameObject* getParent() const;
-    void setParent(BGameObject* parent);
+    void setParent(BGameObject* newParent);
     bool hasParent() const;
     bool isParentOf(const BGameObject* other) const;
     bool isAncestorOf(const BGameObject* other) const;
@@ -38,6 +38,7 @@ public:
 private:
     BGameObject* m_parent;
     QVector<BGameComponent*> m_components;
+    QVector<BGameObject*> m_children;
 };
 
 #endif // BGAMEOBJECT_H
