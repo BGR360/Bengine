@@ -15,8 +15,7 @@ DEFINES += BENGINE_LIBRARY
 
 INCLUDEPATH += src
 
-SOURCES += $$files(src/*.cpp, true) \
-    src/asset/bassetfactory.qdoc
+SOURCES += $$files(src/*.cpp, true)
 
 HEADERS += $$files(src/*.h, true)
 

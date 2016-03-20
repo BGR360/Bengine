@@ -1,7 +1,7 @@
 #ifndef BENGINE_GLOBAL_H
 #define BENGINE_GLOBAL_H
 
-#include <QtCore/qglobal.h>
+#include <QtGlobal>
 
 #if defined(BENGINE_LIBRARY)
 #  define BENGINESHARED_EXPORT Q_DECL_EXPORT

@@ -1,7 +1,7 @@
 #ifndef BENGINE_H
 #define BENGINE_H
 
-#include <qstring.h>
+#include <QString>
 
 #include "bengine_global.h"
 

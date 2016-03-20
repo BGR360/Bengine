@@ -13,8 +13,10 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     bgameobjecttest.cpp \
-    bclasstest.cpp
+    bclasstest.cpp \
+    bdebugtest.cpp
 
 HEADERS += \
     bgameobjecttest.h \
-    bclasstest.h
+    bclasstest.h \
+    bdebugtest.h
