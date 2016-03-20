@@ -1,0 +1,65 @@
+/*!
+  \headerfile <bdebug.h>
+  \title Debug Logging Macros
+
+  \brief The <bdebug.h> header file provides useful macros for generating debug
+  and error messages.
+
+  Use these handy macros to do all of your debugging and error reporting.
+
+ */
+
+/*!
+  \macro B_DEBUG(message)
+  \brief Prints a debug message.
+  \relates <bdebug.h>
+
+  The \a message parameter can be either a c-string, QString, number, or
+  pretty much anything that can be inserted using \c << into the qDebug() stream.
+*/
+
+/*!
+  \macro B_INFO(message)
+  \brief Prints an informational message.
+  \relates <bdebug.h>
+
+  The \a message parameter can be either a c-string, QString, number, or
+  pretty much anything that can be inserted using \c << into the qDebug() stream.
+*/
+
+/*!
+  \macro B_WARN(message)
+  \brief Prints a warning message.
+  \relates <bdebug.h>
+
+  You should primarily use this macro for any errors that might be encountered
+  in your code. This macro does not terminate the program, so only use it
+  for recoverable/non-fatal errors.
+
+  The \a message parameter can be either a c-string, QString, number, or
+  pretty much anything that can be inserted using \c << into the qDebug() stream.
+*/
+
+/*!
+  \macro B_CRITICAL(message)
+  \brief Prints a critical error message or a system error message.
+  \relates <bdebug.h>
+
+  Along with B_WARN, you can use this macro to report recoverable errors
+  in your code. Use it rarely, for errors that are more serious than warnings
+  but are still recoverable. This macro will not terminate the program.
+
+  The \a message parameter can be either a c-string, QString, number, or
+  pretty much anything that can be inserted using \c << into the qDebug() stream.
+*/
+
+/*!
+  \macro B_FATAL(message)
+  \brief Prints a fatal error message shortly before terminating the program.
+  \relates <bdebug.h>
+
+  Only use this macro for truly fatal errors.
+
+  The \a message parameter can be either a c-string, QString, number, or
+  pretty much anything that can be inserted using \c << into the qDebug() stream.
+*/

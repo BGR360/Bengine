@@ -8,7 +8,14 @@
 
   The Core Module contains all of the core classes of the Bengine.
 
+  \chapter Game Objects and Game Components
+
   The main classes of interest are BGameObject and BGameComponent.
+
+  \chapter Debugging and Error tools
+
+  See the documentation for the \l <bdebug.h> header file to see
+  how to log debug messages and report errors in the Bengine.
 
 
 */
