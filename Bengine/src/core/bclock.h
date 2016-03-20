@@ -1,8 +1,6 @@
 #ifndef BCLOCK_H
 #define BCLOCK_H
 
-#include <bengine_global.h>
-
 #include "bobject.h"
 
 class BENGINESHARED_EXPORT BClock : public BObject

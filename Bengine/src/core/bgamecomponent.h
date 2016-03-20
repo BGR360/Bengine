@@ -1,8 +1,6 @@
 #ifndef BGAMECOMPONENT_H
 #define BGAMECOMPONENT_H
 
-#include <bengine_global.h>
-
 #include "bobject.h"
 
 class BGameObject;

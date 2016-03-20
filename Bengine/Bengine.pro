@@ -15,7 +15,8 @@ DEFINES += BENGINE_LIBRARY
 
 INCLUDEPATH += src
 
-SOURCES += $$files(src/*.cpp, true)
+SOURCES += $$files(src/*.cpp, true) \
+    src/asset/bassetfactory.qdoc
 
 HEADERS += $$files(src/*.h, true)
 
@@ -27,6 +28,7 @@ unix {
 DISTFILES += \
     $$files(doc/*.qdocconfig, true) \
     $$files(doc/*.qdoc, true) \
+    $$files(src/*.qdoc, true) \
     $$files(examples/*.h, true) \
     $$files(examples/*.cpp, true)
 

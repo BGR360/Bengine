@@ -1,0 +1,48 @@
+/*!
+  \class BAssetFactory
+  \brief The BAssetFactory class is the interface for all classes which can load, import,
+  and save game assets.
+  \inmodule Assets
+
+  In order for the BAssetManager to be able to load game assets, it needs to have
+  a list of BAssetFactory objects. Each asset factory is responsible for loading \e one
+  type of asset.
+
+  \sa BAsset, BAssetManager
+
+  \chapter Loading Custom Assets
+
+  To give the Bengine the ability to load custom asset types, simply subclass BAssetFactory
+  and override the necessary methods:
+
+  TODO: Include an example.
+
+  \chapter Registering Asset Factories
+
+  To make the BAssetManager aware of your custom asset factory, you must \e register
+  it with the asset manager.
+
+  TODO: More information on registering asset factories.
+
+*/
+
+/*!
+ * \fn virtual BAsset* BAssetFactory::loadAsset(const QString& path) const = 0;
+ * \brief Loads the asset from the file path specified by \a path.
+ *
+ * Returns a pointer the new BAsset, or \c NULL if the asset failed to load.
+ */
+
+/*!
+ * \fn virtual BClass BAssetFactory::supportedClass() const = 0;
+ * \brief Specifies which type of BAsset this factory can load.
+ *
+ * Returns a BClass instance representing the type of BAsset that this factory loads.
+ *
+ * TODO: add an example
+ */
+
+/*!
+ * \fn virtual QVector<const char*> BAssetFactory::supportedExtensions() const = 0;
+ * \brief Returns the list of file extensions, as c-strings, that this factory can load from.
+ */

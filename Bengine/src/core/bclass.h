@@ -5,7 +5,7 @@
 
 #include <typeindex>
 
-class BObject;
+class BENGINESHARED_EXPORT BObject;
 
 class BClass
 {

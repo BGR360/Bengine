@@ -1,8 +1,6 @@
 #ifndef BGAMEOBJECT_H
 #define BGAMEOBJECT_H
 
-#include <bengine_global.h>
-
 #include <qvector.h>
 
 #include "bobject.h"

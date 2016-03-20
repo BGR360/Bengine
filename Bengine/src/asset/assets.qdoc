@@ -1,0 +1,13 @@
+/*!
+
+  \module Assets
+
+  \title Assets Module
+  \brief Assets contains classes for manipulating game assets like textures, shaders, and 3D models.
+  \ingroup modules
+
+  The Assets Module contains classes for manipulating game assets like textures, shaders, and 3D models.
+
+  The module revolves around the BAssetManager class. Every BScene has its own BAssetManager.
+
+*/

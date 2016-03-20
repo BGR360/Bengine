@@ -6,6 +6,8 @@
   \brief Core contains the core classes of the Bengine.
   \ingroup modules
 
+  The Core Module contains all of the core classes of the Bengine.
+
   The main classes of interest are BGameObject and BGameComponent.
 
 
