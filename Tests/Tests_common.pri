@@ -1,7 +1,7 @@
 QT += testlib
 
-LIBS += -L../../Bengine -lbengine
+LIBS += -L../../../Bengine -lbengine
 
 INCLUDEPATH += \
-    ../../Bengine/src \
+    ../../../Bengine/src \
     ..

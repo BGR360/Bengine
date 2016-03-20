@@ -4,3 +4,8 @@ BDebugTest::BDebugTest()
 {
 
 }
+
+void BDebugTest::testCase1()
+{
+
+}

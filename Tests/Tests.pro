@@ -4,8 +4,8 @@ QT -= gui
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    TestCore
+    src/TestCore
 
-HEADERS += tests_global.h
+HEADERS += src/tests_global.h
 
 DISTFILES += Tests_common.pri

@@ -1,4 +1,4 @@
-include(../Tests_common.pri)
+include(../../Tests_common.pri)
 
 QT += core
 QT -= gui
