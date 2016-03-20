@@ -11,7 +11,10 @@ public:
     BDebugTest();
 
 private slots:
-    void testCase1();
+    void debug();
+    void info();
+    void warn();
+    void critical();
 };
 
 #endif // BDEBUGTEST_H

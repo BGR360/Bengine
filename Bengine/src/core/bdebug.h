@@ -10,19 +10,25 @@
 
 #define B_DEBUG(message) \
 ( \
-    (qDebug() << Q_FUNC_INFO << ":" << QString(message).toStdString().c_str()), \
+    (qDebug() << ":" << QString(message).toStdString().c_str()), \
+    (void)0 \
+)
+
+#define B_INFO(message) \
+( \
+    (qInfo() << ":" << QString(message).toStdString().c_str()), \
     (void)0 \
 )
 
 #define B_WARN(message) \
 ( \
-    (qWarning() << Q_FUNC_INFO << ":" << QString(message).toStdString().c_str()), \
+    (qWarning() << ":" << QString(message).toStdString().c_str()), \
     (void)0 \
 )
 
 #define B_CRITICAL(message) \
 ( \
-    (qCritical() << Q_FUNC_INFO << ":" << QString(message).toStdString().c_str()), \
+    (qCritical() << ":" << QString(message).toStdString().c_str()), \
     (void)0 \
 )
 
