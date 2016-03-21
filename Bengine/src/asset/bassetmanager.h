@@ -4,6 +4,7 @@
 #include <QDir>
 #include <QMap>
 #include <QString>
+#include <QVector>
 
 #include <core/bobject.h>
 
@@ -27,8 +28,13 @@ public:
     void requestAsset(const QString& path, const BClass& assetClass);
     void requestAsset(const QDir& path, const BClass& assetClass);
 
+    QVector<const BAssetFactory*> getAssetFactories() const;
     void registerAssetFactory(const BAssetFactory* factory);
+
     void loadAllAssets();
+
+    bool isLoaded(const QString& path) const;
+    bool isLoaded(const QDir& path) const;
 
 private:
     QMap<BClass, const BAssetFactory*> m_assetFactories;

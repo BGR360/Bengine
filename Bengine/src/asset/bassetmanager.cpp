@@ -92,7 +92,22 @@ void BAssetManager::requestAsset(const QDir& path, const BClass& assetClass)
 
 }
 
+QVector<const BAssetFactory*> BAssetManager::getAssetFactories() const
+{
+    return QVector<const BAssetFactory*>();
+}
+
 void BAssetManager::loadAllAssets()
 {
 
+}
+
+bool BAssetManager::isLoaded(const QString& path) const
+{
+    return false;
+}
+
+bool BAssetManager::isLoaded(const QDir& path) const
+{
+    return false;
 }
