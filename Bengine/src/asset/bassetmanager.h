@@ -23,9 +23,12 @@ public:
     bool canLoadAsset(const QDir& path, const BClass& assetClass) const;
 
     template<typename T> void requestAsset(const QString& path);
+    template<typename T> void requestAsset(const QDir& path);
     void requestAsset(const QString& path, const BClass& assetClass);
+    void requestAsset(const QDir& path, const BClass& assetClass);
 
     void registerAssetFactory(const BAssetFactory* factory);
+    void loadAllAssets();
 
 private:
     QMap<BClass, const BAssetFactory*> m_assetFactories;

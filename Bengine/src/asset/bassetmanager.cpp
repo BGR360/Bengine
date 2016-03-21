@@ -76,7 +76,23 @@ void BAssetManager::requestAsset(const QString& path)
 
 }
 
+template<typename T>
+void BAssetManager::requestAsset(const QDir& path)
+{
+
+}
+
 void BAssetManager::requestAsset(const QString& path, const BClass& assetClass)
+{
+
+}
+
+void BAssetManager::requestAsset(const QDir& path, const BClass& assetClass)
+{
+
+}
+
+void BAssetManager::loadAllAssets()
 {
 
 }
