@@ -18,6 +18,10 @@ public:
 
     bool operator==(const BClass& other) const;
     bool operator!=(const BClass& other) const;
+    bool operator<(const BClass& right) const;
+    bool operator<=(const BClass& right) const;
+    bool operator>(const BClass& right) const;
+    bool operator>=(const BClass& right) const;
 
 private:
     std::type_index m_type_info;

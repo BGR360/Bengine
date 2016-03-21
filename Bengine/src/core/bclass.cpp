@@ -84,3 +84,35 @@ bool BClass::operator!=(const BClass& other) const
 {
     return m_type_info != other.m_type_info;
 }
+
+/*!
+ * \brief Used to compare this BClass with \a right.
+ */
+bool BClass::operator<(const BClass& right) const
+{
+    return m_type_info < right.m_type_info;
+}
+
+/*!
+ * \brief Used to compare this BClass with \a right.
+ */
+bool BClass::operator<=(const BClass& right) const
+{
+    return m_type_info <= right.m_type_info;
+}
+
+/*!
+ * \brief Used to compare this BClass with \a right.
+ */
+bool BClass::operator>(const BClass& right) const
+{
+    return m_type_info > right.m_type_info;
+}
+
+/*!
+ * \brief Used to compare this BClass with \a right.
+ */
+bool BClass::operator>=(const BClass& right) const
+{
+    return m_type_info >= right.m_type_info;
+}

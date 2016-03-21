@@ -16,9 +16,16 @@ This is the documentation for the Bengine 3D Game Engine.
 
 \chapter Introduction
 
-This is a 3D game engine written by me,
+This is a 3D game engine being written by me,
 \l {https://bgr360.github.io} {Ben Reeves}, in C++ using
 \l {https://doc.qt.io} {the Qt GUI Framework}.
+
+This is currently version 2.0 of the engine. I wrote version 1.0 of the engine
+over the summer of 2015. You can view the source code for version 1.0
+\l {https://github.com/bgr360/CppGameEngine3D} {here}. I started version 2.0
+in March of 2016, looking to start afresh and revamp the system that I had
+created the previous year. I learned a lot from making version 1.0, and I am
+now using that knowledge to create an even better version this time around.
 
 \chapter Getting Started
 

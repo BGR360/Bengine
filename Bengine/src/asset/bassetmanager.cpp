@@ -47,3 +47,36 @@ BAssetManager::~BAssetManager()
 {
 
 }
+
+template<typename T>
+bool BAssetManager::canLoadAsset(const QString& path) const
+{
+    return false;
+}
+
+template<typename T>
+bool BAssetManager::canLoadAsset(const QDir& path) const
+{
+    return false;
+}
+
+bool BAssetManager::canLoadAsset(const QString& path, const BClass& assetClass) const
+{
+    return false;
+}
+
+bool BAssetManager::canLoadAsset(const QDir& path, const BClass& assetClass) const
+{
+    return false;
+}
+
+template<typename T>
+void BAssetManager::requestAsset(const QString& path)
+{
+
+}
+
+void BAssetManager::requestAsset(const QString& path, const BClass& assetClass)
+{
+
+}
