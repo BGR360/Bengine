@@ -11,7 +11,6 @@ public:
     BAssetManagerTest();
 
 private slots:
-    void automaticConvertStringToDir();
 };
 
 #endif // BASSETMANAGERTEST_H

@@ -3,7 +3,7 @@
 
 #include <core/bobject.h>
 
-class BAsset : public BObject
+class BENGINESHARED_EXPORT BAsset : public BObject
 {
     B_OBJECT(BAsset)
 

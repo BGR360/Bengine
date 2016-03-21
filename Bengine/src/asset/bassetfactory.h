@@ -7,7 +7,7 @@
 
 class BAsset;
 
-class BAssetFactory : public BObject
+class BENGINESHARED_EXPORT BAssetFactory : public BObject
 {
     B_OBJECT(BAssetFactory)
 
